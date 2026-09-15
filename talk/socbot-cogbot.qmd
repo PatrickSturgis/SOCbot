@@ -45,13 +45,13 @@ Online seminar, 12:00 to 13:00 BST. Forty minutes for the talk and five for disc
 ## {.slide}
 
 ```{=html}
-<div class="kicker">This talk</div>
-<div class="head" style="font-size:58px; max-width:1560px;">LLMs may transform many parts of survey research. Their largest contribution may be to <span class="accent">measurement</span>, alongside existing methods.</div>
+<div class="kicker">What I'll talk about today</div>
+<div class="head" style="font-size:58px; max-width:1560px;">LLMs may transform many parts of survey research. Their largest contribution may be to <span class="accent">measurement</span>.</div>
 <div class="panelrow" style="width:1620px; margin-top:50px;">
-<div class="panel"><div class="pname">Occupational coding</div><p style="font-size:36px;">SOCbot. An LLM inside the survey assigns SOC2020 codes and asks follow-up questions where the answer leaves the code ambiguous.</p></div>
-<div class="panel"><div class="pname">Questionnaire pretesting</div><p style="font-size:36px;">Cogbot. LLMs simulate cognitive interviewing and expert review to find flaws in draft questions before fieldwork.</p></div>
+<div style="flex:1; display:flex; flex-direction:column;"><div class="kicker" style="margin-bottom:14px; text-align:left;">Dynamic</div><div class="panel" style="flex:1;"><div class="pname">Occupational coding</div><p style="font-size:36px;"><strong>SOCbot.</strong> An LLM inside the survey assigns SOC2020 codes and asks follow-up questions where the answer leaves the code ambiguous.</p></div></div>
+<div style="flex:1; display:flex; flex-direction:column;"><div class="kicker" style="margin-bottom:14px; text-align:left;">Static</div><div class="panel" style="flex:1;"><div class="pname">Questionnaire pretesting</div><p style="font-size:36px;"><strong>Cogbot.</strong> LLMs simulate cognitive interviewing and expert review to find flaws in draft questions before fieldwork.</p></div></div>
 </div>
-<div class="caption" style="font-size:28px; margin-top:44px;">ESRC Survey Futures project <em>Integrating Generative AI in Question Design Evaluation and Testing</em> (ES/X014150/1) &middot; with Tom Robinson and Laura Fung (LSE) and Caroline Roberts (Lausanne)</div>
+<div class="caption" style="font-size:28px; margin-top:44px;">ESRC Survey Futures project <em>Integrating Generative AI in Question Design Evaluation and Testing</em> (ES/X014150/1) &middot; with Tom Robinson (LSE) and Caroline Roberts (Lausanne)</div>
 ```
 
 ::: {.notes}
@@ -68,11 +68,12 @@ Set out the framing from the abstract. SOCbot is dynamic integration: the LLM in
 <div class="kicker">SOCbot &middot; Occupational coding</div>
 <div class="head" style="font-size:62px; margin-bottom:44px;">Occupation is hard to measure</div>
 <div class="rows" style="max-width:1560px;">
-<div class="row fragment" style="font-size:42px; line-height:1.4; margin-bottom:26px;">Hundreds of occupations, described in technical terms. Open questions on title, tasks, industry and qualifications, coded after fieldwork.</div>
-<div class="row fragment" style="font-size:42px; line-height:1.4; margin-bottom:26px;">Human coders agree 50&ndash;75% of the time at detailed levels. Vague or brief answers cause most of the disagreement.</div>
-<div class="row fragment" style="font-size:42px; line-height:1.4;">Automated tools code after the fact and reach 57&ndash;68% agreement at unit-group level.</div>
+<div class="row fragment" style="font-size:40px; line-height:1.4; margin-bottom:22px;">Hundreds of occupations, many described in technical terms.</div>
+<div class="row fragment" style="font-size:40px; line-height:1.4; margin-bottom:22px;">Measured with open questions on job title, tasks, industry and qualifications, then coded by hand after fieldwork.</div>
+<div class="row fragment" style="font-size:40px; line-height:1.4; margin-bottom:22px;">SOC2020 is hierarchical: 9 major groups, 26 sub-major groups, 104 minor groups and 412 four-digit unit groups, the most detailed level.</div>
+<div class="row fragment" style="font-size:40px; line-height:1.4; margin-bottom:22px;">Human coders agree 50&ndash;75% of the time at unit-group level. Vague or brief answers cause most of the disagreement.</div>
+<div class="row fragment" style="font-size:40px; line-height:1.4;">The procedure is costly, slow and error prone.</div>
 </div>
-<div class="history-takeaway fragment" style="width:1560px; margin-top:44px; font-size:38px;">SOCbot classifies in real time and asks for the information each answer is missing.</div>
 ```
 
 ::: {.notes}
@@ -87,7 +88,7 @@ A short title may identify one occupation unambiguously and leave another unreso
 
 ```{=html}
 <div class="kicker">SOCbot &middot; How it works</div>
-<div class="head" style="font-size:56px; margin-bottom:30px;">Retrieve, classify, and probe when the code is ambiguous</div>
+<div class="head" style="font-size:56px; margin-bottom:30px;">Code and probe on the fly</div>
 <div class="whitecard"><img src="assets/soc-pipeline.png" alt="SOCbot retrieval, classification and follow-up pipeline" style="height:720px; width:auto;"></div>
 ```
 
@@ -103,7 +104,7 @@ Walk through the figure: receive the job title, embed it (text-embedding-3-large
 
 ```{=html}
 <div class="kicker">SOCbot &middot; Study 1, archived responses</div>
-<div class="head" style="font-size:56px; margin-bottom:30px;">Agreement with production coding</div>
+<div class="head" style="font-size:56px; margin-bottom:30px;">Agreement with production coding, Verian Public Voice</div>
 <table class="tbl" style="width:1500px;">
 <tr><th>Model</th><th class="n">Major</th><th class="n">Submajor</th><th class="n">Minor</th><th class="n">Unit</th></tr>
 <tr><td>o4-mini (original)</td><td class="n">0.797</td><td class="n">0.754</td><td class="n">0.709</td><td class="n">0.599</td></tr>
@@ -114,7 +115,7 @@ Walk through the figure: receive the job title, embed it (text-embedding-3-large
 <tr><td>gpt-oss-120b (open-weight)</td><td class="n">0.778</td><td class="n">0.733</td><td class="n">0.675</td><td class="n">0.558</td></tr>
 <tr><td>gpt-oss-20b (open-weight)</td><td class="n">0.770</td><td class="n">0.724</td><td class="n">0.671</td><td class="n">0.547</td></tr>
 </table>
-<div class="caption" style="margin-top:28px;">Verian Public Voice, n = 2,000, job title and industry, retrieval k = 10. Comparator is CASCOT plus human adjudication. Next Steps (n = 5,162, o3): 0.796 major, 0.602 unit. Published human inter-coder agreement at unit level is 0.4&ndash;0.7.</div>
+<div class="caption" style="margin-top:28px;">n = 2,000, job title and industry, retrieval k = 10. Comparator is CASCOT plus human adjudication. Published human inter-coder agreement at unit level is 0.4&ndash;0.7.</div>
 ```
 
 ::: {.notes}
@@ -129,7 +130,7 @@ Two archived surveys with existing production codes. The comparator is not pure 
 
 ```{=html}
 <div class="kicker">SOCbot &middot; Study 1</div>
-<div class="head" style="font-size:56px; margin-bottom:30px;">Disagreement concentrates where human coders also disagree</div>
+<div class="head" style="font-size:56px; margin-bottom:30px;">Unit group agreement across major groups</div>
 <div class="whitecard"><img src="assets/soc-disagreement.png" alt="Unit-group agreement by occupational major group" style="height:640px; width:auto;"></div>
 <div class="caption" style="margin-top:24px;">Unit-group agreement by the comparator&rsquo;s major group. o3, k = 10.</div>
 ```
@@ -146,15 +147,15 @@ Managerial (group 1), administrative (group 4) and associate professional (group
 
 ```{=html}
 <div class="kicker">SOCbot &middot; Study 1</div>
-<div class="head" style="font-size:56px; margin-bottom:30px;">Self-reported confidence is a usable triage signal</div>
+<div class="head" style="font-size:56px; margin-bottom:30px;">LLM confidence is a usable triage signal</div>
 <div class="whitecard"><img src="assets/soc-confidence.png" alt="Agreement by SOCbot confidence band" style="height:640px; width:auto;"></div>
-<div class="caption" style="margin-top:24px;">o3, k = 10. Confidence &ge;71 covers about one quarter of cases with over 90% agreement. Confidence &le;50 agrees on 38&ndash;45%.</div>
+<div class="caption" style="margin-top:24px;">The LLM is prompted to return a confidence score from 0 to 100 with each SOC code it assigns. o3, k = 10.</div>
 ```
 
 ::: {.notes}
 9.5–11.0 minutes.
 
-Agreement rises monotonically with self-reported confidence. Review load can be tuned: ≥81 accepts 13–15% of cases at 93–96% agreement, ≥51 accepts about 60% at roughly 73%. Calibration is model-dependent: in the 81–90 band on Public Voice, o4-mini agrees on 74% and o3 on 93%. Run-to-run variation also concentrates below confidence 50. Triage works best with a reasoning model offline. Source: SOCbot paper, section 4.3.
+Agreement rises monotonically with LLM confidence. Review load can be tuned: ≥81 accepts 13–15% of cases at 93–96% agreement, ≥51 accepts about 60% at roughly 73%. Calibration is model-dependent: in the 81–90 band on Public Voice, o4-mini agrees on 74% and o3 on 93%. Run-to-run variation also concentrates below confidence 50. Triage works best with a reasoning model offline. Source: SOCbot paper, section 4.3.
 :::
 
 ---
@@ -184,9 +185,9 @@ Fieldwork 7–10 July 2025 in Forsta+; 8,770 invited, 1,720 started, no incentiv
 
 ```{=html}
 <div class="kicker">SOCbot &middot; Study 2</div>
-<div class="head" style="font-size:56px; margin-bottom:30px;">Three quarters of respondents needed at most one probe</div>
+<div class="head" style="font-size:56px; margin-bottom:30px;">Number of probes used by SOCbot</div>
 <div class="whitecard"><img src="assets/soc-probes.png" alt="Distribution of the number of SOCbot follow-up probes" style="height:620px; width:auto;"></div>
-<div class="caption" style="margin-top:24px;">23% needed no probe, 50% one, 20% two, 5% three. First probes split evenly between tasks and industry; 8% ask for clarification of the title.</div>
+<div class="caption" style="margin-top:24px;">Total questions asked, 3,279, is about the same as asking every respondent the same two questions, 3,066. Three quarters of respondents received the same or fewer questions than under that design, one quarter received more.</div>
 ```
 
 ::: {.notes}
@@ -220,7 +221,6 @@ Three quarters gave a job title and at most one further answer. Total questions 
 </svg>
 </div>
 <div>
-<div class="row fragment" style="font-size:31px; line-height:1.35; margin-bottom:22px;">No true code exists, so accuracy cannot be measured directly. Only agreement between coders can.</div>
 <div class="row fragment" style="font-size:31px; line-height:1.35; margin-bottom:22px;">Dynamic SOCbot has the most, and most tailored, information, so on theoretical grounds it should be the most accurate coder.</div>
 <div class="row fragment" style="font-size:31px; line-height:1.35; margin-bottom:22px;">The coder that agrees more with the best-informed coder is the more valid one (Cronbach and Meehl 1955). Static SOCbot agrees with it on 58% of cases, human coding on 43%.</div>
 <div class="history-takeaway fragment" style="font-size:31px; margin-top:6px;">Inferred accuracy ordering: dynamic SOCbot, then static SOCbot, then human / CASCOT coding.</div>
@@ -263,19 +263,22 @@ Cheaper and quicker: no separate office-coding stage, and o3 coded 100 cases in 
 
 ```{=html}
 <div class="kicker">Cogbot &middot; Question pretesting</div>
-<div class="head" style="font-size:62px; margin-bottom:44px;">Pretesting is a bottleneck</div>
+<div class="head" style="font-size:62px; margin-bottom:40px;">Question pretesting</div>
 <div class="rows" style="max-width:1560px;">
-<div class="row" style="font-size:42px; line-height:1.4; margin-bottom:26px;">Cognitive interviewing and expert review find problems before fieldwork. Both need scarce expertise.</div>
-<div class="row" style="font-size:42px; line-height:1.4; margin-bottom:26px;">Typical rounds use five to twenty respondents, so long instruments go to field with many items untested.</div>
-<div class="row" style="font-size:42px; line-height:1.4;">The two methods find different kinds of problems.</div>
+<div class="row fragment" style="font-size:42px; line-height:1.4; margin-bottom:26px;">Pretesting is essential to good question design.</div>
+<div class="row fragment" style="font-size:42px; line-height:1.4; margin-bottom:26px;">The main methods are cognitive interviewing and expert review.</div>
+<div class="row fragment" style="font-size:42px; line-height:1.4; margin-bottom:26px;">Both are costly and time-consuming, and rely on scarce human expertise.</div>
+<div class="row fragment" style="font-size:42px; line-height:1.4;">Many questions go to field untested.</div>
 </div>
-<div class="history-takeaway" style="width:1560px; margin-top:44px; font-size:38px;">How well can LLMs identify flaws in survey questions using simulated cognitive testing or expert review?</div>
+<div class="history-takeaway fragment" style="width:1560px; margin-top:44px; font-size:38px;">Our paper: can LLMs detect problems in draft survey questions, as a complement to human pretesting?</div>
 ```
 
 ::: {.notes}
 17.5–19.0 minutes.
 
-Silicon sampling is unsuitable for population inference, but that matters less for diagnosis, where the aim is to find design flaws rather than estimate population quantities. The cognitive interviews here are synthetic transcripts, not interviews with human participants. Source: Cogbot paper, introduction.
+Cognitive interviewing draws on the Tourangeau, Rips and Rasinski four-stage model and has become routine in questionnaire development (Caporaso and Presser 2024). Its constraints: interviewing, training, analysis and revision all take time and money, so few questions, respondents and design variants can be examined. It diagnoses experienced difficulty well but not silent problems that respondents accept without noticing; systematic expert review evaluates questions against problem taxonomies and catches those. Presser and Blair (1994) show the two methods identify different problems. Both depend on scarce skilled practitioners.
+
+Silicon sampling: early studies reproduced aggregate patterns, later ones found ordering and label sensitivity, bias towards Western, educated, liberal groups, poor subgroup recovery outside English, and flattening of within-group diversity. Unsuitable for population inference, but diagnosis is a different task. The cognitive interviews here are synthetic transcripts, not interviews with human participants. Source: Cogbot paper, introduction.
 :::
 
 ---
@@ -284,17 +287,35 @@ Silicon sampling is unsuitable for population inference, but that matters less f
 
 ```{=html}
 <div class="kicker">Cogbot &middot; How it works</div>
-<div class="head" style="font-size:56px; margin-bottom:30px;">Simulated cognitive testing in three stages</div>
+<div class="head" style="font-size:56px; margin-bottom:30px;">Synthetic cognitive interview pipeline</div>
 <div class="whitecard"><img src="assets/cog-pipeline-crop.png" alt="Cogbot pipeline: sample ESS backstories, generate think-aloud transcripts, code problems, consolidate" style="width:1400px; height:auto;"></div>
-<div class="caption" style="margin-top:24px;">30 backstories per run from 2,204 ESS 2018 UK records. Expert review instead prompts the same LLM three times and averages severity ratings.</div>
+<div class="caption" style="margin-top:24px;">30 backstories per run, drawn from 2,204 ESS 2018 UK records.</div>
 ```
 
 ::: {.notes}
-19.0–20.5 minutes.
+19.0–20.0 minutes.
 
-Three stages. First, 30 backstories are drawn at random from 2,204 built deterministically from 2018 ESS UK respondent records, and each simulated respondent thinks aloud through the question in a single prompt, choosing an answer and rating confidence 1–5. Second, an analyst LLM codes problems from each transcript. Third, a synthesis step consolidates findings. No interactive probing. Generation at temperature 0.7.
+Three stages. First, 30 backstories are drawn at random from 2,204 built deterministically from 2018 ESS UK respondent records (age, gender, education, employment status, region, household composition, income band), and each synthetic respondent thinks aloud through the question in a single prompt, choosing an answer and rating confidence 1–5. Second, an analyst LLM codes problems from each transcript, with a supporting excerpt and a severity rating. Third, a synthesis step consolidates findings across respondents. No interactive probing. Generation at temperature 0.7. Not a validated simulation of human judgement. Source: Cogbot paper, section 2.1.
+:::
 
-Expert review: the same LLM is prompted three times to produce three independent reviews, each rating severity from 1 (negligible) to 10 (answer rendered meaningless), followed by synthesis that averages severity. Neither pipeline is a validated simulation of human judgement. Source: Cogbot paper, sections 2.1 and 2.2.
+---
+
+## {.slide}
+
+```{=html}
+<div class="kicker">Cogbot &middot; How it works</div>
+<div class="head" style="font-size:56px; margin-bottom:44px;">Expert review pipeline</div>
+<div class="rows" style="max-width:1560px;">
+<div class="row fragment" style="font-size:42px; line-height:1.4; margin-bottom:26px;">Three independent LLM reviewers, each prompted to act as a survey methodologist, assess the question directly.</div>
+<div class="row fragment" style="font-size:42px; line-height:1.4; margin-bottom:26px;">Each reviewer lists problems and rates severity from 1 (negligible) to 10 (answer rendered meaningless).</div>
+<div class="row fragment" style="font-size:42px; line-height:1.4;">A synthesis step merges duplicates across reviewers and averages severity.</div>
+</div>
+```
+
+::: {.notes}
+20.0–20.5 minutes.
+
+No synthetic respondents and no backstories. The three reviewer calls run at temperature 0.7 so the reviews differ. Synthesis merges duplicate findings, forms compound codes from overlapping ones, and takes the mean severity across the three reviewers. Contrast with cognitive testing: 61 calls per question, 90 to 135 seconds, about $0.50. Source: Cogbot paper, section 2.2 and discussion.
 :::
 
 ---
@@ -351,19 +372,19 @@ Matching of findings to the key for the six primary GPT-4o runs was done by two 
 
 ```{=html}
 <div class="kicker">Cogbot &middot; Example output</div>
-<div class="quote" style="font-size:50px; margin-bottom:10px;">&ldquo;Overall, how satisfied are you with your terms of employment?&rdquo;</div>
-<div class="quote-attr" style="margin-top:6px;">Three embedded problems: vague wording, an asymmetric scale, a presupposition of current employment</div>
-<div class="panelrow" style="width:1700px; gap:40px; margin-top:44px;">
-<div class="panel fragment" style="padding:32px 38px;"><div class="pname" style="font-size:34px; margin-bottom:12px;">Simulated respondent</div><p style="font-size:30px; line-height:1.4;">Retired former shopkeeper. Finds the question inapplicable to their present circumstances.<br><br>Analyst severity <b class="accent">7 / 10</b></p></div>
-<div class="panel fragment" style="padding:32px 38px;"><div class="pname" style="font-size:34px; margin-bottom:12px;">Simulated respondent</div><p style="font-size:30px; line-height:1.4;">Kitchen helper, aged 54. Reads &ldquo;terms&rdquo; as pay, hours and conditions but finds the phrase vague.<br><br>Analyst severity <b class="accent">5 / 10</b></p></div>
-<div class="panel fragment" style="padding:32px 38px;"><div class="pname" style="font-size:34px; margin-bottom:12px;">Expert review, consolidated</div><p style="font-size:30px; line-height:1.4;">&ldquo;Terms of employment&rdquo; is ambiguous: severity <b class="accent">5.7</b>, 3 of 3 reviewers.<br><br>Assumes defined employment terms: severity <b class="accent">5.0</b>, 1 of 3.</p></div>
+<div class="quote" style="font-size:44px; margin-bottom:8px;">&ldquo;Overall, how satisfied are you with your terms of employment?&rdquo;</div>
+<div class="quote-attr" style="margin-top:4px;">Three embedded problems: vague wording, an asymmetric scale, a presupposition of current employment</div>
+<div class="panelrow" style="width:1740px; gap:34px; margin-top:30px; align-items:stretch;">
+<div class="panel fragment" style="padding:26px 30px;"><div class="pname" style="font-size:30px; margin-bottom:10px;">Synthetic respondent 2</div><p style="font-size:26px; line-height:1.4;"><span style="color:var(--dim);">Retired, former shopkeeper.</span> &ldquo;Being retired and a former shopkeeper, I&rsquo;m not currently employed in the traditional sense, so the question feels a bit out of place for me. However, I can think back to when I was actively running my shop. [&hellip;] Since I&rsquo;m retired, none of these apply directly to me anymore.&rdquo;</p></div>
+<div class="panel fragment" style="padding:26px 30px;"><div class="pname" style="font-size:30px; margin-bottom:10px;">Synthetic respondent 24</div><p style="font-size:26px; line-height:1.4;"><span style="color:var(--dim);">Gardener, female, 59.</span> &ldquo;I start thinking about what &lsquo;terms of employment&rsquo; actually means for me. I assume it&rsquo;s about my contract, pay, working conditions, hours, and maybe benefits like holiday or sick leave. [&hellip;] Considering everything, I would say I&rsquo;m &lsquo;Fairly satisfied.&rsquo;&rdquo;</p></div>
+<div class="panel fragment" style="padding:26px 30px;"><div class="pname" style="font-size:30px; margin-bottom:10px;">Expert reviewer</div><p style="font-size:26px; line-height:1.4;"><span style="color:var(--dim);">Comprehension.</span> &ldquo;The phrase &lsquo;terms of employment&rsquo; may be interpreted differently by respondents, potentially including salary, benefits, work hours, or job security.&rdquo;<br><br><span style="color:var(--dim);">Presupposition.</span> &ldquo;The question assumes that respondents have defined and clear terms of employment, which may not be true for all, such as temporary or freelance workers.&rdquo;</p></div>
 </div>
 ```
 
 ::: {.notes}
 23.5–25.0 minutes.
 
-The respondent accounts are paraphrases of synthetic CI-Open transcripts; the expert output is ER-Checklist. Cognitive testing surfaced the problems through respondent circumstances; expert review found them from the question structure. Distinguish a plausible diagnostic from evidence of how a real respondent would answer. Source: Cogbot paper, Table 1.
+The respondent excerpts are verbatim from CI-Open transcripts, as shown in Table 1 of the paper; the expert output is one ER-Checklist reviewer. The consolidated ER-Checklist codes were: "terms of employment" ambiguous, mean severity 5.7, flagged by all three reviewers; assumes defined employment terms, mean severity 5.0, flagged by one. Cognitive testing surfaced the problems through respondent circumstances; expert review found them from the question structure. Distinguish a plausible diagnostic from evidence of how a real respondent would answer. Source: Cogbot paper, Table 1.
 :::
 
 ---
@@ -373,16 +394,15 @@ The respondent accounts are paraphrases of synthetic CI-Open transcripts; the ex
 ```{=html}
 <div class="kicker">Cogbot &middot; Results on GPT-4o</div>
 <div class="head" style="font-size:56px; margin-bottom:30px;">Detection and provisional false positives</div>
-<table class="tbl" style="width:1660px;">
-<tr><th>Configuration</th><th class="n">Detection</th><th class="n">FP per<br>flawed item</th><th class="n">FP per<br>ESS item</th><th class="n">Detection<br>severity &ge;5</th><th class="n">FP per ESS<br>severity &ge;5</th></tr>
-<tr class="hi"><td>CI-List</td><td class="n">75%</td><td class="n">1.8</td><td class="n">1.6</td><td class="n">65%</td><td class="n">1.0</td></tr>
-<tr><td>ER-Checklist</td><td class="n">73%</td><td class="n">1.4</td><td class="n">2.3</td><td class="n">60%</td><td class="n">0.6</td></tr>
-<tr><td>ER-Open</td><td class="n">69%</td><td class="n">1.4</td><td class="n">3.1</td><td class="n">69%</td><td class="n">3.1</td></tr>
-<tr><td>CI-Open</td><td class="n">60%</td><td class="n">1.4</td><td class="n">1.4</td><td class="n">50%</td><td class="n">1.0</td></tr>
-<tr><td>ER-Restrained</td><td class="n">48%</td><td class="n">0.8</td><td class="n">0.3</td><td class="n">46%</td><td class="n">0.3</td></tr>
-<tr><td>CI-Structured</td><td class="n">31%</td><td class="n">0.6</td><td class="n">0.7</td><td class="n">25%</td><td class="n">0.6</td></tr>
+<table class="tbl nowrap1" style="width:1760px;">
+<tr><th>Configuration</th><th class="n">Detection</th><th class="n">FP per<br>flawed item</th><th class="n">FP per<br>ESS item</th><th class="n">Detection<br>severity &ge;5</th><th class="n" style="white-space:nowrap;">FP per flawed<br>severity &ge;5</th><th class="n" style="white-space:nowrap;">FP per ESS<br>severity &ge;5</th></tr>
+<tr class="hi"><td>CI-List</td><td class="n">75%</td><td class="n">1.8</td><td class="n">1.6</td><td class="n">65%</td><td class="n">1.5</td><td class="n">1.0</td></tr>
+<tr><td>ER-Checklist</td><td class="n">73%</td><td class="n">1.4</td><td class="n">2.3</td><td class="n">60%</td><td class="n">1.1</td><td class="n">0.6</td></tr>
+<tr><td>ER-Open</td><td class="n">69%</td><td class="n">1.4</td><td class="n">3.1</td><td class="n">69%</td><td class="n">1.4</td><td class="n">3.1</td></tr>
+<tr><td>CI-Open</td><td class="n">60%</td><td class="n">1.4</td><td class="n">1.4</td><td class="n">50%</td><td class="n">1.0</td><td class="n">1.0</td></tr>
+<tr><td>ER-Restrained</td><td class="n">48%</td><td class="n">0.8</td><td class="n">0.3</td><td class="n">46%</td><td class="n">0.6</td><td class="n">0.3</td></tr>
+<tr><td>CI-Structured</td><td class="n">31%</td><td class="n">0.6</td><td class="n">0.7</td><td class="n">25%</td><td class="n">0.5</td><td class="n">0.6</td></tr>
 </table>
-<div class="caption" style="margin-top:28px;">One run per configuration. Three repeat runs of CI-List averaged 70% detection (range 65&ndash;79%); CI-Open 59% (58&ndash;60%); CI-Structured 34% (29&ndash;40%).</div>
 ```
 
 ::: {.notes}
@@ -481,7 +501,7 @@ Compare with the previous slide. For Opus 5, thresholding cuts ER-Checklist's un
 <tr><td>Flawed questions</td><td class="n">19 of 29 (66%)</td><td class="n">8 of 24 (33%)</td></tr>
 <tr><td>ESS controls</td><td class="n">0 of 9</td><td class="n">2 of 17</td></tr>
 </table>
-<div class="history-takeaway fragment" style="width:1500px; margin-top:44px; font-size:36px;">Many unmatched findings on flawed questions are real problems missing from the key. Most on the control items are spurious.</div>
+<div class="history-takeaway fragment" style="width:1500px; margin-top:44px; font-size:36px;">Many unmatched problems on flawed questions are real problems missing from the key, so the false positive rates are upper bounds. Most on the control items are spurious.</div>
 ```
 
 ::: {.notes}
@@ -496,13 +516,13 @@ Inter-rater agreement on the binary classification was 79% (kappa 0.57). The ass
 
 ```{=html}
 <div class="kicker">Cogbot &middot; Conclusions</div>
-<div class="rows" style="max-width:1620px;">
-<div class="row fragment" style="font-size:38px; line-height:1.4; margin-bottom:24px;">LLMs demonstrated high detection rates with low false positives.</div>
-<div class="row fragment" style="font-size:38px; line-height:1.4; margin-bottom:24px;">LLM review can extend testing to every item in a long instrument, and to studies with no budget for human cognitive testing.</div>
-<div class="row fragment" style="font-size:38px; line-height:1.4; margin-bottom:24px;">A 20-item cognitive-testing evaluation cost under $10 and took under an hour on GPT-4o. Expert review cost under $1 and took minutes.</div>
-<div class="row fragment" style="font-size:38px; line-height:1.4; margin-bottom:24px;">Differently designed pipelines find complementary problems, so use more than one.</div>
-<div class="row fragment" style="font-size:38px; line-height:1.4; margin-bottom:24px;">Findings are candidates for investigation, not instructions to revise. Human cognitive testing remains necessary to learn how real respondents answer.</div>
-<div class="row fragment" style="font-size:38px; line-height:1.4;">Results depend on the model, and models are improving quickly.</div>
+<div class="rows" style="max-width:1560px;">
+<div class="row fragment" style="font-size:42px; line-height:1.4; margin-bottom:26px;">The best configurations detected about three quarters of the embedded problems.</div>
+<div class="row fragment" style="font-size:42px; line-height:1.4; margin-bottom:26px;">False positive rates are substantial, though many are genuine problems missing from the key.</div>
+<div class="row fragment" style="font-size:42px; line-height:1.4; margin-bottom:26px;">Detection depends on prompt design and on the LLM.</div>
+<div class="row fragment" style="font-size:42px; line-height:1.4; margin-bottom:26px;">Cognitive testing and expert review find different problems.</div>
+<div class="row fragment" style="font-size:42px; line-height:1.4; margin-bottom:26px;">Fast and cheap: a 20-item questionnaire in under an hour for under $10.</div>
+<div class="row fragment" style="font-size:42px; line-height:1.4;">Best used as early-stage screening. Human expert review and cognitive interviewing remain necessary.</div>
 </div>
 ```
 
