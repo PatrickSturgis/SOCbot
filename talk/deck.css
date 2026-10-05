@@ -60,6 +60,7 @@
   table.tbl.compact { font-size: 30px; }
   table.tbl.compact th { font-size: 24px; padding: 16px 22px 12px; }
   table.tbl.compact td { padding: 11px 22px; }
+  table.tbl.nowrap1 td:first-child, table.tbl.nowrap1 th:first-child { white-space: nowrap; }
   table.tbl .sub { display: block; font-size: 24px; color: var(--dim); font-weight: 400; }
 
   .logos { display: flex; gap: 60px; align-items: center; justify-content: center; margin-top: 70px; }
