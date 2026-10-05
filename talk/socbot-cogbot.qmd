@@ -30,14 +30,14 @@ format:
 <hr class="rule-orn">
 <div style="font-size:40px; font-weight:600; margin-top:52px;">Patrick Sturgis</div>
 <div class="caption" style="font-size:30px; margin-top:12px;">Department of Methodology, London School of Economics</div>
-<div class="caption" style="font-size:30px; margin-top:34px;">ESS and NatCen Survey Methodology Seminar Series &middot; 15 September 2026</div>
+<div class="caption" style="font-size:30px; margin-top:34px;">Presentation at Department of Methodology, Statistics and Data Science, Utrecht University &middot; 8 October 2026</div>
 <div class="logos"><img src="assets/lse_logo.png" alt="LSE Department of Methodology"><img src="assets/surveyfutures.png" alt="Survey Futures"></div>
 ```
 
 ::: {.notes}
 0.0–0.5 minutes.
 
-Online seminar, 12:00 to 13:00 BST. Forty minutes for the talk and five for discussion.
+Utrecht University seminar, 8 October 2026. Forty minutes for the talk and five for discussion.
 :::
 
 ---
@@ -147,7 +147,7 @@ Managerial (group 1), administrative (group 4) and associate professional (group
 
 ```{=html}
 <div class="kicker">SOCbot &middot; Study 1</div>
-<div class="head" style="font-size:56px; margin-bottom:30px;">LLM confidence is a usable triage signal</div>
+<div class="head" style="font-size:56px; margin-bottom:30px;">LLM confidence is a potential triage signal</div>
 <div class="whitecard"><img src="assets/soc-confidence.png" alt="Agreement by SOCbot confidence band" style="height:640px; width:auto;"></div>
 <div class="caption" style="margin-top:24px;">The LLM is prompted to return a confidence score from 0 to 100 with each SOC code it assigns. o3, k = 10.</div>
 ```
@@ -191,9 +191,26 @@ Fieldwork 7–10 July 2025 in Forsta+; 8,770 invited, 1,720 started, no incentiv
 ```
 
 ::: {.notes}
-12.0–13.5 minutes.
+12.0–13.0 minutes.
 
-Three quarters gave a job title and at most one further answer. Total questions were 3,279 against 3,066 for a fixed two-question design, but three quarters of respondents received the same or fewer questions and a quarter received more. Against the four-question Next Steps design, burden falls by about half. No break-offs during the LLM interaction; roughly 26 seconds per first probe. Probe content adapts: at probe one, tasks and industry are near even; later probes are mostly tasks, with qualifications under 5%. The even split at probe one implies that asking everyone the same two questions is sub-optimal. Source: SOCbot paper, Figures 4 and 5.
+Three quarters gave a job title and at most one further answer. Total questions were 3,279 against 3,066 for a fixed two-question design, but three quarters of respondents received the same or fewer questions and a quarter received more. Against the four-question Next Steps design, burden falls by about half. No break-offs during the LLM interaction; roughly 26 seconds per first probe. Source: SOCbot paper, Figure 4.
+:::
+
+---
+
+## {.slide}
+
+```{=html}
+<div class="kicker">SOCbot &middot; Study 2</div>
+<div class="head" style="font-size:56px; margin-bottom:30px;">What SOCbot chose to ask</div>
+<div class="whitecard"><img src="assets/soc-probe-types.png" alt="Content of SOCbot follow-up probes by probe number" style="height:620px; width:auto;"></div>
+<div class="caption" style="margin-top:24px;">First probes split almost evenly between industry (46%) and job tasks (43%), with 8% asking for clarification of the title. By the third probe, 74% ask about tasks.</div>
+```
+
+::: {.notes}
+13.0–13.5 minutes.
+
+Probe content adapts to what the respondent has already said. At probe one, industry and tasks are near even. Later probes are mostly about tasks (67% at probe two, 74% at probe three), and qualifications stay under 5% throughout. The even split at probe one implies that asking everyone the same two follow-up questions is sub-optimal. Source: SOCbot paper, Figure 5.
 :::
 
 ---
